@@ -59,8 +59,8 @@ def go(config: DictConfig):
                     "output_artifact": "clean_sample.csv",
                     "output_type": "clean_sample",
                     "output_description": "Data with outliers and null values removed",
-                 "min_price": config['etl']['min_price'],
-                 "max_price": config['etl']['max_price']
+                    "min_price": config['etl']['min_price'],
+                    "max_price": config['etl']['max_price']
                 },
             )
             pass
@@ -80,10 +80,16 @@ def go(config: DictConfig):
             pass
 
         if "data_split" in active_steps:
-            ##################
-            # Implement here #
-            ##################
-            pass
+             _ = mlflow.run(
+                f"{config['main']['components_repository']}/train_val_test_split",
+                "main",
+                parameters={
+                    "test_size": config["modeling"]["test_size"],
+                    "random_seed": config["modeling"]["random_seed"],
+                    "stratify_by": config["modeling"]["stratify_by"],
+                    "input": "clean_sample.csv:latest"
+                },
+            )
 
         if "train_random_forest" in active_steps:
 
