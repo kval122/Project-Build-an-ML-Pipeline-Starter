@@ -28,11 +28,11 @@ modeling:
   random_forest:
     n_estimators: 100
     max_depth: 15
-    min_samples_split: 4
-    min_samples_leaf: 3
+    min_samples_split: 10
+    min_samples_leaf: 2
     # Here -1 means all available cores
     n_jobs: -1
     criterion: squared_error
-    max_features: 0.5
+    max_features: 'sqrt'
     # DO not change the following
     oob_score: true
