@@ -90,6 +90,7 @@ def go(config: DictConfig):
                     "input": "clean_sample.csv:latest"
                 },
             )
+             pass
 
         if "train_random_forest" in active_steps:
 
@@ -102,7 +103,19 @@ def go(config: DictConfig):
             # step
 
             ##################
-            # Implement here #
+            _ = mlflow.run(
+                os.path.join(hydra.utils.get_original_cwd(), "src", "train_random_forest"),
+                "main",
+                 parameters={
+                    "trainval_artifact": "trainval_data.csv:latest",
+                    "rf_config": rf_config,
+                    "output_artifact": "random_forest_export",
+                    "random_seed": config["modeling"]["random_seed"],
+                    "val_size": config["modeling"]["val_size"],
+                    "stratify_by": config["modeling"]["stratify_by"],
+                    "max_tfidf_features": config["modeling"]["max_tfidf_features"]
+                },
+            )
             ##################
 
             pass
