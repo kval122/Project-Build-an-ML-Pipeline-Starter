@@ -182,4 +182,4 @@ Please, make sure all steps are using **the same** python version and that you h
 
 
 
-Wandb link: https://wandb.ai/kval122-western-governors-university1398/nyc_airbnb/workspace?nw=nwuserkval122
+Wandb link: https://wandb.ai/kimberly-valentine0310-western-governors-university/nyc_airbnb?nw=nwuserkimberlyvalentine0310
